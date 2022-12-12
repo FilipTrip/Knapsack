@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [System.Serializable]
 public class Knapsack
@@ -15,6 +16,8 @@ public class Knapsack
     public float TotalWeight => totalWeight;
     public float TotalValue => totalValue;
     public int Count => items.Count;
+
+    public Item this[int i] => items[i];
 
     public Knapsack(float weightCapacity)
     {
@@ -49,7 +52,7 @@ public class Knapsack
     {
         Item item = items[i];
         totalValue -= item.value;
-        totalWeight -= totalWeight;
+        totalWeight -= item.weight;
         filledPercentage = totalWeight / weightCapacity;
         items.RemoveAt(i);
     }
@@ -57,6 +60,11 @@ public class Knapsack
     public new string ToString()
     {
         return "c: " + weightCapacity.ToString("0.00") + " \t%: " + (filledPercentage * 100f).ToString("0.0");
+    }
+
+    public void OrderByRelativeValue()
+    {
+        items = items.OrderBy(item => -item.relativeValue).ToList();
     }
 
 }

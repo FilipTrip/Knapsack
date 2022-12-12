@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ee4f41690b241c187176e9ccf79010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCount: 150
+  seed: 0
+  itemCount: 500
   minWeight: 0.5
   minValue: 5
   maxWeight: 10
@@ -114,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3137d4049bc4406a8d92b4d7d5eda29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfknapsacks: 10
-  minWeightCapacity: 5
-  maxWeightCapacity: 50
+  numberOfknapsacks: 20
+  minWeightCapacity: 50
+  maxWeightCapacity: 100
   knapsacks: []
   Finished:
     m_PersistentCalls:

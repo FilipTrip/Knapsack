@@ -10,6 +10,7 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private RectTransform itemScrollViewContent;
     [SerializeField] private RectTransform knapsackScrollViewContent;
+    [SerializeField] private TextMeshProUGUI valuesText;
 
     private void Awake()
     {
@@ -54,6 +55,18 @@ public class CanvasController : MonoBehaviour
         itemScrollViewContent.sizeDelta = new Vector2(itemScrollViewContent.sizeDelta.x, itemScrollViewContent.childCount * linePrefab.GetComponent<RectTransform>().sizeDelta.y + 1);
         knapsackScrollViewContent.sizeDelta = new Vector2(knapsackScrollViewContent.sizeDelta.x, knapsackScrollViewContent.childCount * linePrefab.GetComponent<RectTransform>().sizeDelta.y + 1);
 
+        float totalItemsValue = 0f;
+        float totalKnapsacksValue = 0f;
+
+        foreach (Item item in items)
+            totalItemsValue += item.value;
+
+        foreach (Knapsack knapsack in knapsacks)
+            totalKnapsacksValue += knapsack.TotalValue;
+
+        float percentage = totalKnapsacksValue / totalItemsValue;
+
+        valuesText.text = "Item value in knapsack: " + (percentage * 100f).ToString("0.00") + "%";
     }
 
 }

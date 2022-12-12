@@ -7,6 +7,7 @@ public class ItemGenerator : MonoBehaviour
 {
     [Header("Values")]
 
+    [SerializeField] private int seed;
     [SerializeField] private int itemCount;
     [SerializeField] private float minWeight;
     [SerializeField] private float minValue;
@@ -24,6 +25,9 @@ public class ItemGenerator : MonoBehaviour
 
     public void Generate()
     {
+        int newSeed = seed != 0 ? seed : (int)System.DateTime.Now.Ticks;
+        Random.InitState(newSeed);
+
         items = new Item[itemCount];
 
         float value, weight;
