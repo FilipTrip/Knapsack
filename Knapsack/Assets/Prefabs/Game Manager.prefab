@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076759346927600892}
   - component: {fileID: 8896536262884169595}
+  - component: {fileID: 2965472769280638385}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -44,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ee4f41690b241c187176e9ccf79010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCount: 100
+  itemCount: 150
   minWeight: 0.5
-  minValue: 0.5
+  minValue: 5
   maxWeight: 10
-  maxValue: 10
+  maxValue: 20
   weightDistribution:
     serializedVersion: 2
     m_Curve:
@@ -98,6 +99,25 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   items: []
+  Finished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2965472769280638385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4076759346927600893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3137d4049bc4406a8d92b4d7d5eda29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfknapsacks: 10
+  minWeightCapacity: 5
+  maxWeightCapacity: 50
+  knapsacks: []
   Finished:
     m_PersistentCalls:
       m_Calls: []

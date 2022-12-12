@@ -5,10 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class Knapsack
 {
-    private List<Item> items;
-    private float weightCapacity;
-    private float totalValue;
-    private float totalWeight;
+    [SerializeField] private List<Item> items;
+    [SerializeField] private float weightCapacity;
+    [SerializeField] private float totalValue;
+    [SerializeField] private float totalWeight;
+    [SerializeField] private float filledPercentage;
 
     public float WeightCapacity => weightCapacity;
     public float TotalWeight => totalWeight;
@@ -29,6 +30,7 @@ public class Knapsack
         items.Add(item);
         totalWeight += item.weight;
         totalValue += item.value;
+        filledPercentage = totalWeight / weightCapacity;
         return true;
     }
 
@@ -39,6 +41,7 @@ public class Knapsack
 
         totalWeight -= item.weight;
         totalValue -= item.value;
+        filledPercentage = totalWeight / weightCapacity;
         return true;
     }
 
@@ -47,7 +50,13 @@ public class Knapsack
         Item item = items[i];
         totalValue -= item.value;
         totalWeight -= totalWeight;
+        filledPercentage = totalWeight / weightCapacity;
         items.RemoveAt(i);
+    }
+
+    public new string ToString()
+    {
+        return "c: " + weightCapacity.ToString("0.00") + " \t%: " + (filledPercentage * 100f).ToString("0.0");
     }
 
 }

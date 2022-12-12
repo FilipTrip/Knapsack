@@ -18,6 +18,6 @@ public struct Item
 
     public override string ToString()
     {
-        return "w: " + weight.ToString("0.00") + " v: " + value.ToString("0.00") + " v/w: " + relativeValue.ToString("0.00");
+        return "w: " + weight.ToString("0.00") + " \tv: " + value.ToString("0.00") + " \tv/w: " + relativeValue.ToString("0.00");
     }
 }

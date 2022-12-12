@@ -15,6 +15,12 @@ public class CanvasController : MonoBehaviour
     {
         UpdateLog();
         GameObject.Find("Game Manager").GetComponent<ItemGenerator>().Finished.AddListener(UpdateLog);
+        GameObject.Find("Game Manager").GetComponent<Solver>().Finished.AddListener(UpdateLog);
+    }
+
+    private void Start()
+    {
+        transform.Find("Margin").Find("Generate Button").GetComponent<Button>().onClick.Invoke();
     }
 
     private void ClearLog()
@@ -37,13 +43,13 @@ public class CanvasController : MonoBehaviour
             text.text = i + "\t " + items[i].ToString();
         }
 
-        /*Knapsack[] knapsacks = GameObject.Find("Game Manager").GetComponent<KnapsackGenerator>().Knapsacks;
+        Knapsack[] knapsacks = GameObject.Find("Game Manager").GetComponent<Solver>().Knapsacks;
 
         for (int i = 0; i < knapsacks.Length; ++i)
         {
             TextMeshProUGUI text = Instantiate(linePrefab, knapsackScrollViewContent).GetComponent<TextMeshProUGUI>();
             text.text = i + "\t " + knapsacks[i].ToString();
-        }*/
+        }
 
         itemScrollViewContent.sizeDelta = new Vector2(itemScrollViewContent.sizeDelta.x, itemScrollViewContent.childCount * linePrefab.GetComponent<RectTransform>().sizeDelta.y + 1);
         knapsackScrollViewContent.sizeDelta = new Vector2(knapsackScrollViewContent.sizeDelta.x, knapsackScrollViewContent.childCount * linePrefab.GetComponent<RectTransform>().sizeDelta.y + 1);
