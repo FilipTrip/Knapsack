@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCount: 100
+  minWeight: 0.5
+  minValue: 0.5
   maxWeight: 10
   maxValue: 10
   weightDistribution:
@@ -96,3 +98,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   items: []
+  Finished:
+    m_PersistentCalls:
+      m_Calls: []

@@ -8,6 +8,8 @@ public class ItemGenerator : MonoBehaviour
     [Header("Values")]
 
     [SerializeField] private int itemCount;
+    [SerializeField] private float minWeight;
+    [SerializeField] private float minValue;
     [SerializeField] private float maxWeight;
     [SerializeField] private float maxValue;
     [SerializeField] private AnimationCurve weightDistribution;
@@ -24,10 +26,13 @@ public class ItemGenerator : MonoBehaviour
     {
         items = new Item[itemCount];
 
+        float value, weight;
+
         for (int i = 0; i < itemCount; ++i)
         {
-            items[i].weight = weightDistribution.Evaluate(Random.Range(0f, 1f));
-            items[i].value  = valueDistribution .Evaluate(Random.Range(0f, 1f));
+            weight = minWeight + (maxWeight - minWeight) * weightDistribution.Evaluate(Random.Range(0f, 1f));
+            value  = minValue  + (maxValue  - minValue)  * valueDistribution .Evaluate(Random.Range(0f, 1f));
+            items[i] = new Item(weight, value);
         }
 
         Finished.Invoke();
